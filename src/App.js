@@ -104,7 +104,7 @@ function App() {
 
   return (
     <div className="App">
-      <div>
+      <div style={{ margin: "20px 0px" }}>
         <input type="file" accept="image/*" onChange={onSelectFile} />
       </div>
       {src && (
@@ -120,13 +120,15 @@ function App() {
       )}
 
       {croppedImageUrl && (
-        <div style={{ marginTop: "200px" }}>
-          <h3>Cropped Image:</h3>
-          <img alt="Crop" style={{ maxWidth: '500px' }} src={croppedImageUrl} />
-          <br />
-          <button onClick={onDownloadCrop} style={{ marginTop: "20px", padding: "10px", backgroundColor: "navajowhite", color: "black", borderRadius: "8px", border: 'none', fontSize: "15px", fontWeight: "700" }}>
+        <div style={{ marginTop: "" }}>
+          <h3 style={{marginBottom:"0px"}}>Cropped Image:</h3>
+          <button onClick={onDownloadCrop} style={{ margin: "30px", padding: "10px", backgroundColor: "navajowhite", color: "black", borderRadius: "8px", border: 'none', fontSize: "15px", fontWeight: "700" }}>
             Save Cropped Image
           </button>
+          <div>
+            <img alt="Crop" style={{ maxWidth: '500px' }} src={croppedImageUrl} />
+          </div>
+          <br />
         </div>
       )}
     </div>
