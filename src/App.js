@@ -90,6 +90,18 @@ function App() {
     }
   };
 
+  // Function to handle download of cropped image
+  const onDownloadCrop = () => {
+    if (croppedImageUrl) {
+      const link = document.createElement('a');
+      link.href = croppedImageUrl;
+      link.download = 'cropped_image.jpeg';
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    }
+  };
+
   return (
     <div className="App">
       <div>
@@ -99,9 +111,9 @@ function App() {
         <ReactCrop
           crop={crop}
           ruleOfThirds
-          onImageLoaded={onImageLoaded} 
-          onComplete={onCropComplete} 
-          onChange={onCropChange} 
+          onImageLoaded={onImageLoaded}
+          onComplete={onCropComplete}
+          onChange={onCropChange}
         >
           <img src={src} ref={imageRef} alt="Source" style={{ maxHeight: '500px', maxWidth: '500px' }} />
         </ReactCrop>
@@ -111,6 +123,10 @@ function App() {
         <div style={{ marginTop: "200px" }}>
           <h3>Cropped Image:</h3>
           <img alt="Crop" style={{ maxWidth: '500px' }} src={croppedImageUrl} />
+          <br />
+          <button onClick={onDownloadCrop} style={{ marginTop: "20px", padding: "10px", backgroundColor: "navajowhite", color: "black", borderRadius: "8px", border: 'none', fontSize: "15px", fontWeight: "700" }}>
+            Save Cropped Image
+          </button>
         </div>
       )}
     </div>
